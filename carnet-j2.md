@@ -1,25 +1,25 @@
 # Carnet de bord · J2
 
-Binôme : bXX · Membres : … · Nos réglages sont dans `atelier/cahier-personnel.json` : ne les recopiez pas ici.
+Binôme : b10 · Membres : Bouchra BENBELKACEM et Arthur BRIOT · Nos réglages sont dans `atelier/cahier-personnel.json'
 
 ## Mon positionnement (chacun de vous deux)
 
 Pour chaque notion, chacun écrit « à l'aise » ou « à renforcer ». Ce n'est ni évalué ni classé : c'est votre point de départ pour le bilan individuel de fin de module.
 
-| Notion | Membre 1 : … | Membre 2 : … |
+| Notion | Membre 1 : Bouchra BENBELKACEM | Membre 2 : Arthur BRIOT |
 |---|---|---|
-| Structure HTML | | |
-| CSS et responsive | | |
-| JavaScript | | |
-| DOM et événements | | |
-| Git | | |
-| Tests | | |
+| Structure HTML |à l'aise | à l'aise |
+| CSS et responsive |à l'aise | à l'aise|
+| JavaScript |à l'aise | à renforcer|
+| DOM et événements |à renforcer |à l'aise |
+| Git |à l'aise | à l'aise|
+| Tests |à l'aise | à renforcer |
 
 Chacun, en une phrase, son objectif personnel pour J2 et J3.
 
-Membre 1 :
+Membre 1 : Pour J2 et J3, mon objectif est de renforcer mes compétences dans la gestion du DOM et des événements, afin d'être plus autonome sur les futurs projets.
 
-Membre 2 :
+Membre 2 : Mon objectif est de renforcer mes compétences en JavaScript et en test afin d'être plus autonome sur les futurs projets.
 
 ## R1 · Les tests automatisés
 
