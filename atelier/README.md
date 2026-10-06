@@ -16,4 +16,4 @@ npm test
 le role des 3 modules dans public/js:
 brain.js : Valide le message et choisit la réponse
 view.js : affiche l’historique
-app.js : relie le formulaire et l’affichage
+app.js : relie le formulaire et l’affichage.
