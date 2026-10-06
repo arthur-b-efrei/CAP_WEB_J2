@@ -47,3 +47,33 @@ export function replyTo(message) {
   }
   return REPONSES.inconnu;
 }
+
+const SYNONYMES = {
+  coucou: 'salut',
+  hello: 'salut',
+  bonsoir: 'salut',
+  help: 'aide',
+  sos: 'aide'
+};
+
+export function synonyme(message) {
+  if (typeof message !== 'string') {
+    return '';
+  }
+  const texte = message.trim().toLowerCase();
+  if (Object.hasOwn(SYNONYMES, texte)) {
+    return SYNONYMES[texte];
+  }
+  return texte;
+}
+
+export function compterMots(message) {
+  if (typeof message !== 'string') {
+    return 0;
+  }
+  const texte = message.trim();
+  if (texte === '') {
+    return 0;
+  }
+  return texte.split(/\s+/).length;
+}
