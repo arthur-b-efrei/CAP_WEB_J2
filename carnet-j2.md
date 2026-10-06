@@ -84,4 +84,6 @@ Patch 2, dans `essai-2` puis `abordage/mon-patch.patch` : `normaliser` fait auss
 
 ## Fin de journée
 
-Chacun, une phrase : ce que vous savez faire ce soir et que vous ne saviez pas faire ce matin. Relisez votre positionnement : une notion est-elle passée de « à renforcer » à « à l'aise » ?
+ Bouchra : Ce soir, je sais relire un patch et expliquer pourquoi il améliore ou affaiblit le code, ce que je ne savais pas faire ce matin. Je me sens maintenant plus à l’aise avec les revues de code.
+
+Arthur : Aujourd’hui, j’ai appris à écrire et faire passer des tests unitaires en deux temps (test rouge puis code vert). Je suis passée de « à renforcer » à « à l’aise » sur la pratique des tests.
