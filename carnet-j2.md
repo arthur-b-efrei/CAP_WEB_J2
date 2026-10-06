@@ -27,11 +27,16 @@ Les tests rouges du départ, et ce que vous en avez fait :
 
 | Test rouge | Cause trouvée (une phrase) | Fichier | Message du commit `fix:` |
 |---|---|---|---|
-| | | | |
+| refuse le vide et les espaces seuls | Le vide était testé avant `trim()`, donc les espaces seuls passaient. | `public/js/brain.js` | `fix: refuse le vide après avoir retiré les espaces` |
+| accepte 250 caractères et refuse 251 | La longueur était comparée à 280 au lieu de `LIMITE`. | `public/js/brain.js` | `fix: la limite de caractères suit LIMITE` |
+| ignore la casse et les espaces autour | `replyTo` passait en minuscules mais ne retirait pas les espaces. | `public/js/brain.js` | `fix: replyTo ignore aussi les espaces autour` |
+| reconnaît les deux mots du cahier personnel, quelles que soient la casse et les espaces autour | Même défaut : sans `trim()`, `  CERISE ` ne matchait pas. | `public/js/brain.js` | `fix: replyTo ignore aussi les espaces autour` |
+| répond à une phrase inconnue par un repli distinct | L’inconnu renvoyait la même phrase que « aide ». | `public/js/brain.js` | `fix: repli distinct pour une phrase inconnue` |
+| view.js affiche du texte et ne décide pas des réponses | L’affichage injectait du HTML avec `innerHTML`. | `public/js/view.js` | `fix: view.js affiche avec textContent` |
 
-Avec l'agent : ce qu'il a proposé et que vous avez refusé, et pourquoi.
+Avec l'agent : aucune proposition refusée ; les 5 défauts étaient dans `public/js/`, le contrat n’a pas été touché.
 
-Pour aller plus loin : le nom renommé par votre commit `refactor:`, et pourquoi le nouveau est plus clair.
+Pour aller plus loin : `liste` est devenu `motsConnusFormates`, pour dire que ce sont les mots du cahier, déjà mis en forme pour la réponse « aide ».
 
 ## R2 · Documenter le projet
 

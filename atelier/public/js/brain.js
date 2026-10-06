@@ -8,12 +8,13 @@ const MOTS = {
   prairie: 'Prairie : je peux vous indiquer les horaires des prochaines séances.'
 };
 
-const liste = Object.keys(MOTS).map((mot) => `« ${mot} »`).join(' et ');
+const motsConnusFormates = Object.keys(MOTS).map((mot) => `« ${mot} »`).join(' et ');
 
 const REPONSES = {
   salut: 'Bonjour ! Je suis Cap Web, un assistant à règles. Écrivez « aide » pour voir ce que je sais faire.',
-  aide: `Je connais « salut », « aide », « test », et deux mots à moi : ${liste}.`,
-  test: 'Test bien reçu : mes règles fonctionnent.'
+  aide: `Je connais « salut », « aide », « test », et deux mots à moi : ${motsConnusFormates}.`,
+  test: 'Test bien reçu : mes règles fonctionnent.',
+  inconnu: 'Je n’ai pas compris. Écrivez « aide » pour voir ce que je sais faire.'
 };
 
 export function validateMessage(raw) {
@@ -24,14 +25,14 @@ export function validateMessage(raw) {
   if (value === '') {
     return { ok: false, error: 'Le message ne doit pas être vide.' };
   }
-  if (value.length > 280) {
+  if (value.length > LIMITE) {
     return { ok: false, error: `Le message doit contenir ${LIMITE} caractères au maximum.` };
   }
   return { ok: true, value };
 }
 
 export function replyTo(message) {
-  const texte = String(message).toLowerCase();
+  const texte = String(message).trim().toLowerCase();
   if (texte === 'salut' || texte === 'bonjour') {
     return REPONSES.salut;
   }
@@ -44,6 +45,5 @@ export function replyTo(message) {
   if (Object.hasOwn(MOTS, texte)) {
     return MOTS[texte];
   }
-  // Message inconnu : on rappelle ce que Cap Web sait faire.
-  return REPONSES.aide;
+  return REPONSES.inconnu;
 }
