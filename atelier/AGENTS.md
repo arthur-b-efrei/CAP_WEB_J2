@@ -17,3 +17,4 @@ Ce fichier est lu par un nouvel arrivant et par l’agent. Ce qui n’y est pas 
 - Ne mets jamais de clé, de jeton, de mot de passe ou de donnée personnelle dans un fichier, un commit ou un prompt.
 - N’accepte aucun changement de l’agent sans avoir relu le diff. Une ligne que tu ne sais pas expliquer se refuse.
 - Ne fais pas `git add -A`. Ajoute seulement les fichiers de l’étape, par exemple `git add -- public/js`.
+- N’ajoute aucune dépendance (`npm install`, `package.json`) qui n’est pas déjà listée dans `dependances-autorisees.json`. Si un outil manque, arrête-toi et explique pourquoi.
