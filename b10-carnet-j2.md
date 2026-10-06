@@ -1,6 +1,6 @@
 # Carnet de bord · J2
 
-Binôme : b10 · Membres : Bouchra BENBELKACEM et Arthur BRIOT · Nos réglages sont dans `atelier/cahier-personnel.json'
+Binôme : b10 · Membres : Bouchra BENBELKACEM et Arthur BRIOT · Nos réglages sont dans `atelier/cahier-personnel.json`.
 
 ## Mon positionnement (chacun de vous deux)
 
@@ -25,18 +25,20 @@ Membre 2 : Mon objectif est de renforcer mes compétences en JavaScript et en te
 
 Les tests rouges du départ, et ce que vous en avez fait :
 
-| Test rouge | Cause trouvée (une phrase) | Fichier | Message du commit `fix:` |
+| Test rouge | Cause trouvée (une phrase) | Fichier | Commit réel |
 |---|---|---|---|
-| refuse le vide et les espaces seuls | Le vide était testé avant `trim()`, donc les espaces seuls passaient. | `public/js/brain.js` | `fix: refuse le vide après avoir retiré les espaces` |
-| accepte 250 caractères et refuse 251 | La longueur était comparée à 280 au lieu de `LIMITE`. | `public/js/brain.js` | `fix: la limite de caractères suit LIMITE` |
-| ignore la casse et les espaces autour | `replyTo` passait en minuscules mais ne retirait pas les espaces. | `public/js/brain.js` | `fix: replyTo ignore aussi les espaces autour` |
-| reconnaît les deux mots du cahier personnel, quelles que soient la casse et les espaces autour | Même défaut : sans `trim()`, `  CERISE ` ne matchait pas. | `public/js/brain.js` | `fix: replyTo ignore aussi les espaces autour` |
-| répond à une phrase inconnue par un repli distinct | L’inconnu renvoyait la même phrase que « aide ». | `public/js/brain.js` | `fix: repli distinct pour une phrase inconnue` |
-| view.js affiche du texte et ne décide pas des réponses | L’affichage injectait du HTML avec `innerHTML`. | `public/js/view.js` | `fix: view.js affiche avec textContent` |
+| refuse le vide et les espaces seuls | Le vide était testé avant `trim()`, donc les espaces seuls passaient. | `public/js/brain.js` | `6ba515a` `fix: refuse le vide après avoir retiré les espaces` |
+| accepte 250 caractères et refuse 251 | La longueur était comparée à 280 au lieu de `LIMITE`. | `public/js/brain.js` | `8cbda73` `J2: feat(R1)` |
+| ignore la casse et les espaces autour | `replyTo` passait en minuscules mais ne retirait pas les espaces. | `public/js/brain.js` | `8cbda73` `J2: feat(R1)` |
+| reconnaît les deux mots du cahier personnel, quelles que soient la casse et les espaces autour | Même défaut : sans `trim()`, `  CERISE ` ne matchait pas. | `public/js/brain.js` | `8cbda73` `J2: feat(R1)` |
+| répond à une phrase inconnue par un repli distinct | L’inconnu renvoyait la même phrase que « aide ». | `public/js/brain.js` | `8cbda73` `J2: feat(R1)` |
+| view.js affiche du texte et ne décide pas des réponses | L’affichage injectait du HTML avec `innerHTML`. | `public/js/view.js` | `8cbda73` `J2: feat(R1)` |
 
 Avec l'agent : aucune proposition refusée ; les 5 défauts étaient dans `public/js/`, le contrat n’a pas été touché.
 
-Pour aller plus loin : `liste` est devenu `motsConnusFormates`, pour dire que ce sont les mots du cahier, déjà mis en forme pour la réponse « aide ».
+Un seul commit `fix:` : `6ba515a`. Les 4 autres corrections et le `innerHTML` sont groupés dans `8cbda73`, pas dans des `fix:` séparés.
+
+Pour aller plus loin : `liste` est devenu `motsConnusFormates` dans le même `8cbda73`, pas dans un commit `refactor:` à part.
 
 ## R2 · Documenter le projet
 
@@ -44,11 +46,13 @@ Vos trois documents sont dans `atelier` : `README.md`, `SPEC.md` et `AGENTS.md`.
 
 Pour aller plus loin, avec l'agent, les demandes du formateur :
 
+Les 3 demandes pièges n’ont pas été rejouées avec l’agent ; on n’invente pas le tableau.
+
 | Demande | Ce qu'a fait l'agent | Votre décision | Règle d'`AGENTS.md` concernée (ou ajoutée) |
 |---|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | non faite | — | — |
+| 2 | non faite | — | — |
+| 3 | non faite | — | — |
 
 ## R3 · Premiers tests unitaires
 
@@ -56,8 +60,8 @@ Pour aller plus loin, avec l'agent, les demandes du formateur :
 |---|---|
 | Fonction tirée | `synonyme` (F1) |
 | Le rouge vu (message exact) | `SyntaxError: The requested module '../public/js/brain.js' does not provide an export named 'synonyme'` |
-| Identifiant du commit `test:` | à remplir après `git commit -m "test: synonyme, critères C1 à C5"` |
-| Identifiant du commit `feat:` | à remplir après `git commit -m "feat: synonyme"` |
+| Identifiant du commit `test:` | pas de commit `test:` séparé |
+| Identifiant du commit `feat:` | `707464c` `J2: R3` (test + code de `synonyme` et `compterMots` dans le même commit) |
 | Casse volontaire : la ligne changée | le `return texte;` final de `synonyme` remplacé par `return '';` |
 | Casse volontaire : le test devenu rouge | `C4 : un autre message revient en minuscules, sans les espaces autour` (`'' !== 'météo'`) |
 | Pour aller plus loin : la deuxième fonction | `compterMots` (F2) |
@@ -86,4 +90,4 @@ Patch 2, dans `essai-2` puis `abordage/mon-patch.patch` : `normaliser` fait auss
 
  Bouchra : Ce soir, je sais relire un patch et expliquer pourquoi il améliore ou affaiblit le code, ce que je ne savais pas faire ce matin. Je me sens maintenant plus à l’aise avec les revues de code.
 
-Arthur : Aujourd’hui, j’ai appris à écrire et faire passer des tests unitaires en deux temps (test rouge puis code vert). Je suis passée de « à renforcer » à « à l’aise » sur la pratique des tests.
+Arthur : Aujourd’hui, j’ai appris à écrire et faire passer des tests unitaires en deux temps (test rouge puis code vert). Je suis passé de « à renforcer » à « à l’aise » sur la pratique des tests.
