@@ -74,11 +74,13 @@ Les critères C1 à C5 de votre fonction, recopiés de la fiche :
 
 | Patch | Accepté ou refusé | Fichier et ligne | Raison |
 |---|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | Accepté | `public/js/brain.js` L18 et L47–49 ; `tests/merci.test.js` | Description = diff : « merci » a sa réponse, casse et espaces via `trim`+`toLowerCase`. Le contrat n’est pas touché. Dans la page, `<b>gras</b>` reste du texte, les espaces seuls sont refusés, « aide » répond. `npm test` : 45/45. |
+| 2 | Refusé | `tests/contrat/brain.contrat.test.js` L68–71 et L86 ; `public/js/brain.js` L37–38 | Piège : le contrat est affaibli (`'  SALUT '` devient `'SALUT'`). `normaliser` fait `toLowerCase` sans `trim`, donc `'  SALUT '` et `'  AU REVOIR '` tombent dans le repli. Les tests restent verts parce que l’assertion sur les espaces a disparu. |
+| 3 | Refusé | `public/js/view.js` L4–6 et L13 | Piège : `enGras` produit du HTML et `createContextualFragment` l’injecte (comme `innerHTML`). Essai : `<b>gras</b>` s’affiche en gras, `li.innerHTML` = `<strong>Vous</strong> : <b>gras</b>`. Le contrat ne cherche que `innerHTML`, donc `npm test` reste vert. |
 
 Pour aller plus loin : le patch que vous avez corrigé, et ce que vous avez changé.
+
+Patch 2, dans `essai-2` puis `abordage/mon-patch.patch` : `normaliser` fait aussi `trim()` ; le fichier `tests/contrat/brain.contrat.test.js` n’est plus modifié ; le test vérifie `'  AU REVOIR '`. `npm test` : 46/46, et `'  SALUT '` égale de nouveau `'salut'`.
 
 ## Fin de journée
 
