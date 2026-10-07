@@ -33,7 +33,23 @@ function charger() {
   }
 }
 
-formulaire.addEventListener('submit', (event) => {
+async function demanderConseil() {
+  try {
+    const reponse = await fetch('/api/conseil', { headers: { accept: 'application/json' } });
+    if (!reponse.ok) {
+      throw new Error('réponse du serveur invalide');
+    }
+    const donnees = await reponse.json();
+    if (typeof donnees.conseil !== 'string' || donnees.conseil.trim() === '') {
+      throw new Error('conseil invalide');
+    }
+    return donnees.conseil;
+  } catch {
+    return 'Le serveur ne répond pas : conseil indisponible.';
+  }
+}
+
+formulaire.addEventListener('submit', async (event) => {
   event.preventDefault();
   const controle = validateMessage(champ.value);
   if (!controle.ok) {
@@ -42,7 +58,10 @@ formulaire.addEventListener('submit', (event) => {
     return;
   }
   historique.push({ role: 'user', text: controle.value });
-  historique.push({ role: 'assistant', text: replyTo(controle.value) });
+  const texte = controle.value.trim().toLowerCase() === 'conseil'
+    ? await demanderConseil()
+    : replyTo(controle.value);
+  historique.push({ role: 'assistant', text: texte });
   sauvegarder();
   renderMessages(historique, liste);
   champ.value = '';
