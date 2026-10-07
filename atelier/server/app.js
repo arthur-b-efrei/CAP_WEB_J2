@@ -21,6 +21,12 @@ const TYPES = {
   'js/view.js': 'text/javascript; charset=utf-8'
 };
 
+const CONSEILS = [
+  'Arrivez 10 minutes avant la séance : le hall est petit, le popcorn part vite.',
+  'Demandez le programme de la semaine : les films changent souvent, une séance unique passe vite.',
+  'Les tarifs réduits sont souvent en semaine, hors avant-première.'
+];
+
 export function createApp({ publicDir, version = 'dev' } = {}) {
   const serveur = http.createServer((req, res) => {
     traiter(req, res).catch(() => {
@@ -48,6 +54,13 @@ export function createApp({ publicDir, version = 'dev' } = {}) {
     } catch {
       res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
       res.end('Non trouvé');
+      return;
+    }
+    if (chemin === '/api/conseil') {
+      const conseil = CONSEILS[Math.floor(Math.random() * CONSEILS.length)];
+      const corps = JSON.stringify({ conseil });
+      res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'content-length': Buffer.byteLength(corps) });
+      res.end(methode === 'HEAD' ? '' : corps);
       return;
     }
     // Métadonnée de version fournie au démarrage.
