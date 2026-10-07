@@ -93,3 +93,12 @@ Arthur : Aujourd’hui, j’ai appris à écrire et faire passer des tests unita
 ## J3 · Étape 1 · Le troisième mot
 
 Prédiction, avant de toucher au code : si on ajoute un troisième mot dans `MOTS`, Cap Web répondra encore « deux mots » à « aide », parce que ce nombre est écrit à la main dans `REPONSES.aide`. La liste des mots, elle, sera à jour : `motsConnusFormates` est calculé avec `Object.keys(MOTS)`.
+
+## J3 · Étape 3 · Lighthouse accessibilité
+
+| Essai | Score | Alerte |
+|---|---|---|
+| Avec le `label` | 100 | aucune |
+| Sans le `label` | 93 | Form elements do not have associated labels (les éléments de formulaire n’ont pas de labels associés) |
+
+Sans le `label`, une erreur rouge apparaît aussi en console : `#limite` est dans le `label`, donc `limiteElt.textContent` plante. Le `label` a été remis. Au clavier : le champ a un `label`, ordre Tab champ → Envoyer → Effacer ; Entrée dans le `textarea` va à la ligne, l’envoi se fait avec le bouton Envoyer.
