@@ -89,3 +89,7 @@ Patch 2, dans `essai-2` puis `abordage/mon-patch.patch` : `normaliser` fait auss
  Bouchra : Ce soir, je sais relire un patch et expliquer pourquoi il améliore ou affaiblit le code, ce que je ne savais pas faire ce matin. Je me sens maintenant plus à l’aise avec les revues de code.
 
 Arthur : Aujourd’hui, j’ai appris à écrire et faire passer des tests unitaires en deux temps (test rouge puis code vert). Je suis passé de « à renforcer » à « à l’aise » sur la pratique des tests.
+
+## J3 · Étape 1 · Le troisième mot
+
+Prédiction, avant de toucher au code : si on ajoute un troisième mot dans `MOTS`, Cap Web répondra encore « deux mots » à « aide », parce que ce nombre est écrit à la main dans `REPONSES.aide`. La liste des mots, elle, sera à jour : `motsConnusFormates` est calculé avec `Object.keys(MOTS)`.

@@ -5,14 +5,15 @@ export const LIMITE = 250;
 
 const MOTS = {
   cerise: 'Cerise : je peux vous présenter les films indépendants disponibles.',
-  prairie: 'Prairie : je peux vous indiquer les horaires des prochaines séances.'
+  prairie: 'Prairie : je peux vous indiquer les horaires des prochaines séances.',
+  affiche: 'Affiche : je peux vous décrire les films à l’affiche cette semaine.'
 };
 
 const motsConnusFormates = Object.keys(MOTS).map((mot) => `« ${mot} »`).join(' et ');
 
 const REPONSES = {
   salut: 'Bonjour ! Je suis Cap Web, un assistant à règles. Écrivez « aide » pour voir ce que je sais faire.',
-  aide: `Je connais « salut », « aide », « test », et deux mots à moi : ${motsConnusFormates}.`,
+  aide: `Je connais « salut », « aide », « test », et ${Object.keys(MOTS).length} mots à moi : ${motsConnusFormates}.`,
   test: 'Test bien reçu : mes règles fonctionnent.',
   inconnu: 'Je n’ai pas compris. Écrivez « aide » pour voir ce que je sais faire.'
 };
